@@ -11,6 +11,6 @@ public class Address {
     private String phone;
     private String address;
     @ManyToOne
-    @JoinColumn(name ="id", referencedColumnName = "f_person")
+    @JoinColumn(name ="f_person", referencedColumnName = "id")
     private Person person;
 }

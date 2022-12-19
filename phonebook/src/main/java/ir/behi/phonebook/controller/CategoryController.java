@@ -5,7 +5,10 @@ import ir.behi.phonebook.exception.ServiceException;
 import ir.behi.phonebook.service.CategoryService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/category")
@@ -38,12 +41,12 @@ public class CategoryController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody CategoryDTO category) {
+    public ResponseEntity add(@RequestBody @Validated CategoryDTO category) {
         return ResponseEntity.ok(categoryService.insert(category));
     }
 
     @PutMapping("/update")
-    public ResponseEntity update(@RequestBody CategoryDTO category) {
+    public ResponseEntity update(@RequestBody @Valid CategoryDTO category) {
         return ResponseEntity.ok(categoryService.update(category));
     }
 

@@ -1,12 +1,11 @@
 package ir.behi.phonebook.controller;
 
 import ir.behi.phonebook.dto.AddressDTO;
-import ir.behi.phonebook.dto.PersonDTO;
 import ir.behi.phonebook.exception.ServiceException;
 import ir.behi.phonebook.service.AddressService;
-import ir.behi.phonebook.service.PersonService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class AddressController {
     private final AddressService addressService;
 
-    public AddressController( AddressService addressService) {
+    public AddressController(AddressService addressService) {
         this.addressService = addressService;
     }
 
@@ -44,12 +43,12 @@ public class AddressController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody AddressDTO address) {
+    public ResponseEntity add(@RequestBody @Validated AddressDTO address) {
         return ResponseEntity.ok(addressService.insert(address));
     }
 
     @PutMapping("/update")
-    public ResponseEntity update(@RequestBody AddressDTO address) {
+    public ResponseEntity update(@RequestBody @Validated AddressDTO address) {
         return ResponseEntity.ok(addressService.update(address));
     }
 

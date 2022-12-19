@@ -1,12 +1,11 @@
 package ir.behi.phonebook.controller;
 
-import ir.behi.phonebook.dto.CategoryDTO;
 import ir.behi.phonebook.dto.PersonDTO;
 import ir.behi.phonebook.exception.ServiceException;
 import ir.behi.phonebook.service.PersonService;
-import ir.behi.phonebook.service.PersonService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -44,12 +43,12 @@ public class PersonController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody PersonDTO person) {
+    public ResponseEntity add(@RequestBody @Validated PersonDTO person) {
         return ResponseEntity.ok(personService.insert(person));
     }
 
     @PutMapping("/update")
-    public ResponseEntity update(@RequestBody PersonDTO person) {
+    public ResponseEntity update(@RequestBody @Validated PersonDTO person) {
         return ResponseEntity.ok(personService.update(person));
     }
 

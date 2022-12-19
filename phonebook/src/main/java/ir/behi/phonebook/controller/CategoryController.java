@@ -3,6 +3,7 @@ package ir.behi.phonebook.controller;
 import ir.behi.phonebook.dto.CategoryDTO;
 import ir.behi.phonebook.exception.ServiceException;
 import ir.behi.phonebook.service.CategoryService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,16 @@ public class CategoryController {
     @GetMapping("/getAll")
     public ResponseEntity getAll() {
         return ResponseEntity.ok(categoryService.findAll());
+    }
+
+    @GetMapping("/getAllByPaging")
+    public ResponseEntity getAllByPaging(@RequestParam Pageable pageable) {
+        return ResponseEntity.ok(categoryService.findAllByPaging((pageable)));
+    }
+
+    @GetMapping("/getById")
+    public ResponseEntity getById(@RequestParam Integer id) throws ServiceException {
+        return ResponseEntity.ok(categoryService.findById(id));
     }
 
     @PostMapping("/add")

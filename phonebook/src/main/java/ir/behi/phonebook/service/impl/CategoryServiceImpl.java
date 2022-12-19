@@ -62,7 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryDTO> findByPaging(Pageable pageable) {
+    public List<CategoryDTO> findAllByPaging(Pageable pageable) {
         return mapper.ToDTOs((List) this.dao.findAll(pageable));
     }
 }

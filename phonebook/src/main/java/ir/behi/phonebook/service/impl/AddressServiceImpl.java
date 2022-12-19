@@ -64,7 +64,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<AddressDTO> findByPaging(Pageable pageable) {
+    public List<AddressDTO> findAllByPaging(Pageable pageable) {
         return mapper.ToDTOs((List) this.dao.findAll(pageable));
     }
 }

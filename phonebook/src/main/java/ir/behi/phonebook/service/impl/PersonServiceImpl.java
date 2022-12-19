@@ -64,7 +64,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<PersonDTO> findByPaging(Pageable pageable) {
+    public List<PersonDTO> findAllByPaging(Pageable pageable) {
         return mapper.ToDTOs((List) this.dao.findAll(pageable));
     }
 }

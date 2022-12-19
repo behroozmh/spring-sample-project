@@ -16,5 +16,5 @@ public interface GeneralService<M> {
     boolean delete(Object id) throws ServiceException;
     M findById(Object id) throws ServiceException;
     List<M> findAll();
-    List<M> findByPaging(Pageable pageable);
+    List<M> findAllByPaging(Pageable pageable);
 }

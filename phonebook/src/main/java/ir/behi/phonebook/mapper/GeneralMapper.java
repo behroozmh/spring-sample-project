@@ -6,7 +6,7 @@ import java.util.List;
 public interface GeneralMapper<E, M> {
     E ToEntity(M model);
 
-    M ToModel(E entity);
+    M ToDTO(E entity);
 
     default List<E> ToEntities(List<M> models) {
         if (models != null & models.size() > 0) {
@@ -17,11 +17,11 @@ public interface GeneralMapper<E, M> {
         } else return new ArrayList<>();
     }
 
-    default List<M> ToModels(List<E> entities) {
+    default List<M> ToDTOs(List<E> entities) {
         if (entities != null & entities.size() > 0) {
             List<M> models = new ArrayList<>();
             for (E entity : entities)
-                models.add(ToModel(entity));
+                models.add(ToDTO(entity));
             return models;
         } else return new ArrayList<>();
     }

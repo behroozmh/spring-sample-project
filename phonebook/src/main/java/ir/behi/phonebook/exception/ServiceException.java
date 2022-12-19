@@ -1,6 +1,6 @@
 package ir.behi.phonebook.exception;
 
-public class ServiceException extends Exception {
+public class ServiceException extends RuntimeException {
     private String key;
     private String code;
     private Integer status;

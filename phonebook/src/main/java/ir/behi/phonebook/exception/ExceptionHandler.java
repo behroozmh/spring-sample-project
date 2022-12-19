@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.text.MessageFormat;
@@ -33,6 +34,7 @@ public class ExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
@@ -43,6 +45,12 @@ public class ExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
         return errors;
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler({Exception.class})
+    public ResponseEntity<Object> exception(Exception exception) {
+        return ResponseEntity.internalServerError().body(resolveMessage("internal.server.error",
+                exception.getMessage()));
     }
 
     private String resolveMessage(String key) {

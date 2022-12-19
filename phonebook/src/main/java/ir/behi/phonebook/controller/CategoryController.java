@@ -1,8 +1,10 @@
 package ir.behi.phonebook.controller;
 
+import ir.behi.phonebook.dto.CategoryDTO;
+import ir.behi.phonebook.exception.ServiceException;
 import ir.behi.phonebook.service.CategoryService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/category")
@@ -14,4 +16,28 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    @GetMapping("/get/{id}")
+    public ResponseEntity get(@PathVariable Integer id) throws ServiceException {
+        return ResponseEntity.ok(categoryService.findById(id));
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity getAll() {
+        return ResponseEntity.ok(categoryService.findAll());
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity add(@RequestBody CategoryDTO category) {
+        return ResponseEntity.ok(categoryService.insert(category));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity update(@RequestBody CategoryDTO category) {
+        return ResponseEntity.ok(categoryService.update(category));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) throws ServiceException {
+        return ResponseEntity.ok(categoryService.delete(id));
+    }
 }

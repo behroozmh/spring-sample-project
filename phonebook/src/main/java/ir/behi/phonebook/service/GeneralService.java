@@ -13,8 +13,8 @@ import java.util.List;
 public interface GeneralService<M> {
     M insert(M model);
     M update(M model);
-    void delete(Object id) throws ServiceException;
+    boolean delete(Object id) throws ServiceException;
     M findById(Object id) throws ServiceException;
-    List<M> findAll(M model);
+    List<M> findAll();
     List<M> findByPaging(Pageable pageable);
 }

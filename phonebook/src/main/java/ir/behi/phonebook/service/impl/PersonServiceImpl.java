@@ -40,13 +40,14 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void delete(Object id) throws ServiceException {
+    public boolean delete(Object id) throws ServiceException {
         if (id != null) {
             Optional<Person> entity = this.dao.findById((Integer) id);
             if (entity.isPresent())
                 this.dao.delete(entity.get());
-            else throw new ServiceException("entity.not.found", "1500");
+            else throw new ServiceException("person.not.found", "1500");
         } else throw new ServiceException("id.not.found", "1500");
+        return true;
     }
 
     @Override
@@ -54,11 +55,11 @@ public class PersonServiceImpl implements PersonService {
         Optional<Person> entity = this.dao.findById((Integer) id);
         if (entity.isPresent())
             return this.mapper.ToDTO(entity.get());
-        else throw new ServiceException("entity.not.found", "1500");
+        else throw new ServiceException("person.not.found", "1500");
     }
 
     @Override
-    public List<PersonDTO> findAll(PersonDTO model) {
+    public List<PersonDTO> findAll() {
         return mapper.ToDTOs((List) this.dao.findAll());
     }
 

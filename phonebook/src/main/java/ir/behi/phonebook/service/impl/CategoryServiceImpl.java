@@ -38,13 +38,14 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(Object id) throws ServiceException {
+    public boolean delete(Object id) throws ServiceException {
         if (id != null) {
             Optional<Category> category = this.dao.findById((Integer) id);
             if (category.isPresent())
                 this.dao.delete(category.get());
-            else throw new ServiceException("entity.not.found", "1500");
+            else throw new ServiceException("category.not.found", "1500");
         } else throw new ServiceException("id.not.found", "1500");
+        return true;
     }
 
     @Override
@@ -52,11 +53,11 @@ public class CategoryServiceImpl implements CategoryService {
         Optional<Category> category = this.dao.findById((Integer) id);
         if (category.isPresent())
             return this.mapper.ToDTO(category.get());
-        else throw new ServiceException("entity.not.found", "1500");
+        else throw new ServiceException("category.not.found", "1500");
     }
 
     @Override
-    public List<CategoryDTO> findAll(CategoryDTO model) {
+    public List<CategoryDTO> findAll() {
         return mapper.ToDTOs((List) this.dao.findAll());
     }
 

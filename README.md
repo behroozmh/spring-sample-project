@@ -2,7 +2,7 @@
 
 ### PhoneBook
 The following guides illustrate how to use some features concretely:
-		With this items:
+		* With this items:
 
 * 1- RestController 
 * 2- SpringDataJpa

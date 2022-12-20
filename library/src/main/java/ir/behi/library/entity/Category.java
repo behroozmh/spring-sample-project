@@ -8,8 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Entity
-@Table
+@Entity(name = "Category")
+@Table(name = "Category")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,10 +18,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category")
     @SequenceGenerator(name = "seq_category", initialValue = 1, allocationSize = 1)
     private int id;
-
     @NotNull
     private String name;
     private Boolean isEnabled;
 
-
+    @OneToMany(mappedBy = "category")
+    private List<Book> bookList;
 }

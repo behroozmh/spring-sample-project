@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "Book")
 @Table(name = "Book")
@@ -24,5 +25,9 @@ public class Book {
     @ManyToOne
     private Category category;
 
+    @OneToMany(mappedBy = "book")
+    private List<Library> libraryList;
 
+    @OneToMany(mappedBy = "book")
+    private List<Borrow> borrowList;
 }

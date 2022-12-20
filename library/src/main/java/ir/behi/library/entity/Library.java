@@ -16,11 +16,10 @@ public class Library {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_library")
     @SequenceGenerator(name = "seq_library", initialValue = 1, allocationSize = 1)
     private Integer id;
-
-    @ManyToOne
-    private Book book;
-
     private Integer number;
     private Integer existNum;
     private Boolean isBorrowAble;
+
+    @ManyToOne
+    private Book book;
 }

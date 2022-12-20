@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * create User: behrooz.mh
+ * Date: 12/20/2022
+ * TIME: 10:26 AM
+ **/
 @Entity(name = "Borrow")
 @Table(name = "Borrow")
 @Data

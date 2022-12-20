@@ -8,6 +8,11 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * create User: behrooz.mh
+ * Date: 12/20/2022
+ * TIME: 10:30 AM
+ **/
 @Entity(name = "Book")
 @Table(name = "Book")
 @Data

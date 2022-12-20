@@ -8,6 +8,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+/**
+ * create User: behrooz.mh
+ * Date: 12/20/2022
+ * TIME: 10:00 AM
+ **/
 @Entity(name = "Category")
 @Table(name = "Category")
 @Data

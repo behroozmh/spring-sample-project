@@ -23,7 +23,7 @@ public class Borrow {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_borrow")
     @SequenceGenerator(name = "seq_borrow", initialValue = 1, allocationSize = 1)
     private Integer id;
-    private Date rejDate;
+    private Date rejectDate;
     private Date receiveDate;
 
     @ManyToOne

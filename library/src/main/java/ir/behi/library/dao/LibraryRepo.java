@@ -14,10 +14,12 @@ import java.util.List;
 public interface LibraryRepo {
 
     Library create(Library entity);
+    boolean remove(Integer id);
 
     List<Library> isBorrowAble();
 
     List<Library> getAllLibrary();
+    Library get(Integer id);
 
     Integer checkExistNum(Integer id);
 

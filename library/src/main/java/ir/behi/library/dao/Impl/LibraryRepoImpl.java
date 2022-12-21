@@ -21,6 +21,17 @@ public class LibraryRepoImpl implements LibraryRepo {
     }
 
     @Override
+    public Library get(Integer id) {
+        return em.find(Library.class, id);
+    }
+
+    @Override
+    public boolean remove(Integer id) {
+        em.remove(this.get(id));
+        return true;
+    }
+
+    @Override
     public Library updateReceive(Library entity) {
         int i = em.createQuery("update Library l " + " set l.existNum= : existNum " +
                 " where l.id= :code")

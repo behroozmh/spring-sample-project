@@ -11,8 +11,6 @@ import java.util.List;
  * TIME: 12:40 AM
  **/
 public interface BorrowService {
-
-
     Boolean findNameExists(String categoryName) throws Exception;
 
     BorrowDTO create(BorrowDTO model) throws Exception;
@@ -21,9 +19,7 @@ public interface BorrowService {
 
     boolean delete(Integer id);
 
-    BorrowDTO personGetBorrow(Integer id);
-
-    List<BorrowDTO> getAllBorrowPerson(PersonDTO person);
+    List<BorrowDTO> getAllBorrowByPersonId(Integer personId);
 
     List<BorrowDTO> getAllBorrow();
 }

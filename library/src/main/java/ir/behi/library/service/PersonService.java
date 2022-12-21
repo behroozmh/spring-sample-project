@@ -1,7 +1,6 @@
 package ir.behi.library.service;
 
 import ir.behi.library.dto.PersonDTO;
-import ir.behi.library.dto.PersonModel;
 
 import java.util.List;
 
@@ -13,17 +12,17 @@ import java.util.List;
 public interface PersonService {
     Boolean existByCode(String code);
 
-    List<PersonModel> findByNationalCode(String code);
+    List<PersonDTO> findByNationalCode(String code);
 
-    PersonModel create(PersonDTO person) throws Exception;
+    PersonDTO create(PersonDTO person) throws Exception;
 
-    PersonModel update(PersonDTO person);
+    PersonDTO update(PersonDTO person);
 
     boolean delete(Integer id);
 
     boolean deleteById(Integer id);
 
-    PersonModel get(Integer id);
+    PersonDTO get(Integer id);
 
-    List<PersonModel> getAll();
+    List<PersonDTO> getAll();
 }

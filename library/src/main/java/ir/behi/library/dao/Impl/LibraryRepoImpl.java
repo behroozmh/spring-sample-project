@@ -32,32 +32,39 @@ public class LibraryRepoImpl implements LibraryRepo {
     }
 
     @Override
-    public Library updateReceive(Library entity) {
+    public Library updateReceive(Integer id) {
+        Library entity = get(id);
+        int exist = entity.getExistNum() - 1;
         int i = em.createQuery("update Library l " + " set l.existNum= : existNum " +
-                " where l.id= :code")
-                .setParameter("code", entity.getId())
-                .setParameter("existNum", entity.getExistNum() + 1)
+                " where l.book.id= :id")
+                .setParameter("id", id)
+                .setParameter("existNum", exist)
                 .executeUpdate();
-
-        return em.find(Library.class, entity.getId());
+        entity.setExistNum(exist);
+        return entity;
     }
 
     @Override
-    public Library updateReturn(Library entity) {
-        int i = em.createQuery("update Library l " + " set l.existNum= : existNum " +
-                " where l.id= :code")
-                .setParameter("code", entity.getId())
-                .setParameter("existNum", entity.getExistNum() - 1)
-                .executeUpdate();
-
-        return em.find(Library.class, entity.getId());
+    public Library updateReturn(Integer id) {
+        Library entity = get(id);
+        if (entity.getExistNum() > 0) {
+            int exist = entity.getExistNum() + 1;
+            int i = em.createQuery("update LibraryEntity l " + " set l.existNum= : existNum " +
+                    " where l.book.id= :id")
+                    .setParameter("id", id)
+                    .setParameter("existNum", exist)
+                    .executeUpdate();
+            entity.setExistNum(exist);
+            return entity;
+        } else
+            return null;
     }
 
     @Override
     public List<Library> isBorrowAble() {
         List<Library> entities = (List<Library>) em.createQuery("from Library l" + " " +
-                "where l.isBorrowAble= :true")
-                .setParameter("true", true)
+                "where l.isBorrowAble= :isBorrowAble")
+                .setParameter("isBorrowAble", true)
                 .getResultList();
         return entities;
     }

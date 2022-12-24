@@ -14,16 +14,18 @@ import java.util.List;
 public interface LibraryRepo {
 
     Library create(Library entity);
+
     boolean remove(Integer id);
 
     List<Library> isBorrowAble();
 
     List<Library> getAllLibrary();
+
     Library get(Integer id);
 
     Integer checkExistNum(Integer id);
 
-    Library updateReceive(Library entity);
+    Library updateReceive(Integer id);
 
-    Library updateReturn(Library entity);
+    Library updateReturn(Integer id);
 }

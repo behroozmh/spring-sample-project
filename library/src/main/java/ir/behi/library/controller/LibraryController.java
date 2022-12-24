@@ -1,8 +1,9 @@
 package ir.behi.library.controller;
 
+import ir.behi.library.dto.BorrowDTO;
 import ir.behi.library.dto.LibraryDTO;
+import ir.behi.library.exception.ServiceException;
 import ir.behi.library.service.LibraryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,32 +23,32 @@ public class LibraryController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity addPerson(@RequestBody LibraryDTO model) throws Exception {
+    public ResponseEntity addPerson(@RequestBody LibraryDTO model) throws ServiceException {
         return ResponseEntity.ok().body(libraryService.create(model));
     }
 
-    @PutMapping(value = "/updateReceive")
-    public ResponseEntity updateReceive(@RequestBody LibraryDTO model) throws Exception {
-        return ResponseEntity.ok(libraryService.updateWithReceive(model));
+    @PutMapping(value = "/updateReceive/{id}")
+    public ResponseEntity updateReceive(@PathVariable Integer id)  {
+        return ResponseEntity.ok(libraryService.updateWithReceive(id));
     }
 
-    @PutMapping(value = "/updateReturn")
-    public ResponseEntity updateReturn(@RequestBody LibraryDTO model) throws Exception {
-        return ResponseEntity.ok(libraryService.updateWithReturn(model));
+    @PutMapping(value = "/updateReturn/{id}")
+    public ResponseEntity updateReturn(@PathVariable Integer id) throws ServiceException {
+        return ResponseEntity.ok(libraryService.updateWithReturn(id));
     }
 
-    @GetMapping(value = "/check")
-    public ResponseEntity checkIsBorrowAble() throws Exception {
-        return ResponseEntity.ok(libraryService.checkIsBorrowAble());
+    @GetMapping(value = "/lendingBooks")
+    public ResponseEntity lendingBooks(@RequestBody BorrowDTO borrowDTO) throws ServiceException {
+        return ResponseEntity.ok(libraryService.lendingBooks(borrowDTO));
     }
 
     @GetMapping(value = "/getAll")
-    public ResponseEntity getAllLibrary() throws Exception {
+    public ResponseEntity getAllLibrary()  {
         return ResponseEntity.ok().body(libraryService.getAll());
     }
 
     @GetMapping(value = "/checkExistNum/{id}")
-    public ResponseEntity checkExistNum(@PathVariable Integer id) throws Exception {
+    public ResponseEntity checkExistNum(@PathVariable Integer id) {
         return ResponseEntity.ok(libraryService.checkExistNum(id));
     }
 

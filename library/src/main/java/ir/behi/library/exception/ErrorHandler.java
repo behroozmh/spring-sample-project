@@ -25,7 +25,8 @@ public class ErrorHandler {
         if (exception.getKey() != null && !exception.getKey().isEmpty()) {
             return ResponseEntity.badRequest().body(tools.resolveMessage(exception.getKey()));
         } else
-            return ResponseEntity.badRequest().body(tools.resolveMessage("entity.not.found"));
+            return ResponseEntity.badRequest().body(tools.resolveMessage("internal.server.error",
+                    exception.getMessage()));
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)

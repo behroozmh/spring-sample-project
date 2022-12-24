@@ -2,9 +2,9 @@ package ir.behi.library.service.Impl;
 
 import ir.behi.library.dao.CategoryRepo;
 import ir.behi.library.dto.CategoryDTO;
+import ir.behi.library.exception.ServiceException;
 import ir.behi.library.mapper.CategoryConverter;
 import ir.behi.library.service.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (!this.findNameExists(model.getName())) {
             return converter.ToDTO(categoryRepo.save(converter.ToEntity(model)));
         } else
-            throw new Exception("This name exists");
+            throw new ServiceException("category.is.exist");
     }
 
 

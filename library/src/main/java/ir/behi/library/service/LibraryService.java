@@ -1,6 +1,8 @@
 package ir.behi.library.service;
 
+import ir.behi.library.dto.BorrowDTO;
 import ir.behi.library.dto.LibraryDTO;
+import ir.behi.library.exception.ServiceException;
 
 import java.util.List;
 
@@ -10,14 +12,15 @@ import java.util.List;
  * TIME: 12:30 AM
  **/
 public interface LibraryService {
+    boolean loanable(Integer id);
 
-    List<LibraryDTO> checkIsBorrowAble() throws Exception;
+    LibraryDTO create(LibraryDTO model) throws ServiceException;
 
-    LibraryDTO create(LibraryDTO model) throws Exception;
+    LibraryDTO updateWithReceive(Integer id);
 
-    LibraryDTO updateWithReceive(LibraryDTO model);
+    LibraryDTO updateWithReturn(Integer id) throws ServiceException;
 
-    LibraryDTO updateWithReturn(LibraryDTO model);
+    boolean lendingBooks(BorrowDTO borrowDTO) throws ServiceException;
 
     boolean delete(Integer id);
 

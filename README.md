@@ -32,4 +32,5 @@ The following guides illustrate how to use some features concretely:
 * 11- Configuaration and properties files
 * 12- Implement any Business Logic Service
 * 13- Simple Transaction Manager Handling
+* 14- Add Senario Test for Rest Test
 

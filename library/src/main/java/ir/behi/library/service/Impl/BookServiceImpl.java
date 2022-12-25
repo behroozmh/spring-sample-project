@@ -2,6 +2,7 @@ package ir.behi.library.service.Impl;
 
 import ir.behi.library.dao.BookRepo;
 import ir.behi.library.dto.BookDTO;
+import ir.behi.library.exception.ServiceException;
 import ir.behi.library.mapper.BookConverter;
 import ir.behi.library.service.BookService;
 import org.springframework.stereotype.Service;
@@ -31,11 +32,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDTO create(BookDTO model)  {
+    public BookDTO create(BookDTO model) throws ServiceException {
         if (!this.findNameExists(model.getName())) {
             return converter.ToDTO(bookRepo.save(converter.ToEntity(model)));
         } else
-            throw new SecurityException("entity.not.found");
+            throw new ServiceException("book.not.found");
     }
 
     @Override

@@ -34,3 +34,36 @@ The following guides illustrate how to use some features concretely:
 * 13- Simple Transaction Manager Handling
 * 14- Add Scenario Test for Rest Test
 
+## security and login
+
+This project Login With User and Password
+
+### With this items:
+* 1- thymeleaf spring boot template engine 
+* 2- Spring Security
+* 3- SpringDataJpa and Custom JPA Query 
+* 4- Hibernate and HQL For Query
+* 5- Resource Bundle,Locale For Multi Language
+* 6- Configuration and properties files
+* 7- Test for Security Test
+* 8- bootstrap and jquery
+
+
+## employee project
+
+This project for Official user to view Leave time and assetes
+
+### With this items:
+* 1- thymeleaf spring boot template engine 
+* 2- Spring Security
+* 3- SpringDataJpa and Custom JPA Query 
+* 4- Hibernate and HQL For Query
+* 5- Resource Bundle,Locale For Multi Language
+* 6- Configuration and properties files
+* 7- Test for Security Test
+* 8- bootstrap and jquery
+* 9- Hibernate and HQL For Query
+* 10- Lombok
+* 11- Mapstruct and use any Options
+* 12- javax.validation For Validation
+* 13- Implement any Business Logic Service

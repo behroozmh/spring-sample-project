@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('ورود')">
+</head>
+<body>
+
+<div th:if="${ #httpServletRequest.remoteUser != null}">
+    <h1>You are Login in with user pass</h1>
+    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <h2><a href="/profile">user profile</a></h2>
+    <br/>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+
+<div th:if="${ #httpServletRequest.remoteUser == null}">
+    <h1>Login in template</h1>
+    <h2>login with user pass</h2>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+        <div><label> User Name : <input type="text" name="username"/> </label></div>
+        <div><label> Password: <input type="password" name="password"/> </label></div>
+        <div><label> <input type="checkbox" name="re-me"/> remember me</label></div>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
+    <hr/>
+    <form th:action="@{/lwm}" method="post">
+        <div><label> User Name : <input type="text" name="mobile"/> </label></div>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
+</div>
+
+</body>
+<script th:replace="fragments/script"></script>
+</html>

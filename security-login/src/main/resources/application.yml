@@ -1,0 +1,17 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /sec
+    session:
+      cookie:
+        http-only: true
+        secure: true
+        same-site: strict
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: auth_user
+    password: auth_user
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true

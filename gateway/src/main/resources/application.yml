@@ -1,6 +1,24 @@
 spring:
   application:
     name: api-Gateway
+  security:
+    oauth2:
+      client:
+        registration:
+          custom:
+            client-id: portal
+            client-secret: portalSecret
+            scope: portalScope
+            authorization-grant-type: authorization_code
+            redirect-uri: https://saba.esata.ir:7091
+        provider:
+          custom:
+            authorization-uri: https://saba.esata.ir:7090/authentication/oauth/authorize
+            token-uri: https://saba.esata.ir:7090/authentication/oauth/token
+            user-info-uri: https://saba.esata.ir:7090/authentication/user
+            user-name-attribute: preferred_username
+
+  #            redirect-uri: http://localhost:8082/ui-one/login/oauth2/code/custom
   cloud:
     gateway:
       routes:
@@ -12,5 +30,7 @@ spring:
           uri: http://localhost:9090/resource
           predicates:
             - Path=/resource/**
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: 8085

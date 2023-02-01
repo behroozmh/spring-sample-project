@@ -1,0 +1,12 @@
+server:
+  port: 8085
+  servlet.context-path: /authServer
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: auth_user
+    password: auth_user
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true

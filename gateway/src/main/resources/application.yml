@@ -10,12 +10,12 @@ spring:
             client-secret: portalSecret
             scope: portalScope
             authorization-grant-type: authorization_code
-            redirect-uri: https://saba.esata.ir:7091
+            redirect-uri: http://localhost:8085
         provider:
           custom:
-            authorization-uri: https://saba.esata.ir:7090/authentication/oauth/authorize
-            token-uri: https://saba.esata.ir:7090/authentication/oauth/token
-            user-info-uri: https://saba.esata.ir:7090/authentication/user
+            authorization-uri: http://localhost:8086/authServer/oauth/authorize
+            token-uri: http://localhost:8086/authServer/oauth/token
+            user-info-uri: http://localhost:8086/authServer/user
             user-name-attribute: preferred_username
 
   #            redirect-uri: http://localhost:8082/ui-one/login/oauth2/code/custom

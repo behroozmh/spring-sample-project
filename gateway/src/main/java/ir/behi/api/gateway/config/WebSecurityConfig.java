@@ -1,5 +1,6 @@
-package ir.behi.gateway;
+package ir.behi.api.gateway.config;
 
+import ir.behi.api.gateway.handler.CustomLogoutHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,8 +16,25 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebSecurity
 //@EnableWebFluxSecurity
 public class WebSecurityConfig {
+    private CustomLogoutHandler logoutHandler;
+
+    public WebSecurityConfig(CustomLogoutHandler logoutHandler) {
+        this.logoutHandler = logoutHandler;
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.headers().cacheControl().disable()
+                .frameOptions().deny()
+                .and()
+                .authorizeRequests()
+                .antMatchers(new String[]{"/runtime-**", "/polyfills-**", "/main-**", "/scripts.**", "/styles.**",
+                        "/login", "/bower_components/**", "/resources/**", "/logout"})
+                .permitAll().anyRequest().authenticated()
+                .and()
+                .logout().addLogoutHandler(logoutHandler)
+                .and()
+                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
         http.authorizeRequests()
                 .antMatchers("/static/**").permitAll()
                 .anyRequest().authenticated()

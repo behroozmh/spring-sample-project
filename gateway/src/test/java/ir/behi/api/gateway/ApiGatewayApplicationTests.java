@@ -1,10 +1,10 @@
-package ir.behi.gateway;
+package ir.behi.api.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GatewayApplicationTests {
+class ApiGatewayApplicationTests {
 
     @Test
     void contextLoads() {

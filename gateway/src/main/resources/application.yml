@@ -1,16 +1,52 @@
 spring:
   application:
     name: api-Gateway
+  security:
+    oauth2:
+      client:
+        registration:
+          custom:
+            client-id: portal
+            client-secret: portalSecret
+            scope: portalScope
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8085
+        provider:
+          custom:
+            authorization-uri: http://localhost:8086/authServer/oauth/authorize
+            token-uri: http://localhost:8086/authServer/oauth/token
+            user-info-uri: http://localhost:8086/authServer/user
+            user-name-attribute: preferred_username
   cloud:
     gateway:
       routes:
-        - id: me
-          uri: http://localhost:8082/me
+        - id: user
+          uri: http://localhost:8082/user
           predicates:
-            - Path=/me/**
+            - Path=/user/**
+        - id: logout
+            uri: http://localhost:8082/logout
+            predicates:
+              - Path=/logout/**
         - id: resource
           uri: http://localhost:9090/resource
           predicates:
             - Path=/resource/**
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: 8085
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+auth:
+  portocol: https
+  host: https://saba.esata.ir
+  port: 7090
+  context: authentication
+my:
+  white-list:
+    host: localhost:8081,172.17.192.121:8081,10.128.40.48
+    origin: http://localhost:8081,http://172.17.192.121:8081
+    methods: GET,POST,PUT,OPTION,DELETE

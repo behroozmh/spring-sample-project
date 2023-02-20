@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "USERS")
 @Table(name = "USERS")
@@ -32,4 +33,6 @@ public class UserEntity {
     private Boolean isExpired;
     private Boolean isCredentials;
 
+    @OneToMany(mappedBy = "user")
+    List<UserRolesEntity> userRolesList;
 }

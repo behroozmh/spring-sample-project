@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ir.behi</groupId>
-    <artifactId>oauth2-resource-server</artifactId>
+    <artifactId>oauth2-resource-server-keycloack</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>oauth2-resource-server</name>
-    <description>this is oauth2 resource server</description>
+    <name>oauth2-resource-server-keycloack</name>
+    <description>this is oauth2 resource server with keycloack</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

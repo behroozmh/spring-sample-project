@@ -1,4 +1,4 @@
-package ir.behi.oauth2.config;
+package ir.behi.oauth2.resource.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

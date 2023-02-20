@@ -1,4 +1,4 @@
-package ir.behi.oauth2;
+package ir.behi.oauth2.resource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

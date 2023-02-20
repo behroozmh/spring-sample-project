@@ -1,4 +1,4 @@
-package ir.behi.oauth2;
+package ir.behi.oauth2.resource;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

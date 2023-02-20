@@ -1,4 +1,4 @@
-package ir.behi.oauth2.entity;
+package ir.behi.oauth2.resource.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -6,6 +6,8 @@ import ir.behi.oauth2.resource.repo.PersonRepo;
 import ir.behi.oauth2.resource.service.PersonService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class PersonServiceImpl implements PersonService {
 
@@ -25,5 +27,11 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Iterable<PersonDTO> getList() {
         return mapper.toDTOs(repo.findAll());
+    }
+
+    @Transactional
+    @Override
+    public PersonDTO update(PersonDTO dto) {
+        return mapper.toDTO(repo.save(mapper.toEntity(dto)));
     }
 }

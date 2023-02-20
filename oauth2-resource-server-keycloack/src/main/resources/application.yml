@@ -1,0 +1,18 @@
+server:
+  port: 8086
+  servlet.context-path: /resource-server
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: auth_user
+    password: auth_user
+    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8083/oauth/realms/baeldung
+          jwk-set-uri: http://localhost:8083/oauth/realms/baeldung/protocol/openid-connect/certs
+  jpa:
+    generate-ddl: true

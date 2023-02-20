@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "ROLE")
 @Table(name = "ROLE")
@@ -19,4 +20,6 @@ public class RoleEntity {
     private String name;
     private String authority;
 
+    @OneToMany(mappedBy = "role")
+    List<UserRolesEntity> userRolesList;
 }

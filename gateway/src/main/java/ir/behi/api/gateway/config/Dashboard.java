@@ -10,10 +10,9 @@ import org.springframework.core.annotation.Order;
 @Configuration
 @PropertySource(value = "classpath:application.yml")
 public class Dashboard {
-
-    @Value("${zuul.routes.logout.url}")
+    @Value("${auth.logout.url}")
     private String LOGOUT_URL;
-    @Value("${zuul.routes.authorize.url}")
+    //    @Value("${spring.cloud.gateway.routes.authorize.url}")
     private String AUTHORIZATION_URL;
     @Value("${my.white-list.methods}")
     private String CORS_ALLOW_METHODS;

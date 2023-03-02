@@ -1,11 +1,9 @@
 package ir.behi.oauth2.resource.controller;
 
+import ir.behi.oauth2.resource.dto.PersonDTO;
 import ir.behi.oauth2.resource.service.PersonService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/person")
@@ -24,5 +22,10 @@ public class PersonController {
     @GetMapping(value = "/getList")
     public ResponseEntity getList() {
         return ResponseEntity.ok(personService.getList());
+    }
+
+    @PostMapping(value = "/update")
+    public ResponseEntity update(@RequestBody PersonDTO dto) {
+        return ResponseEntity.ok(personService.update(dto));
     }
 }

@@ -8,5 +8,7 @@ import org.mapstruct.Mapper;
 public interface PersonMapper {
     PersonDTO toDTO(PersonEntity person);
 
+    PersonEntity toEntity(PersonDTO dto);
+
     Iterable<PersonDTO> toDTOs(Iterable<PersonEntity> person);
 }

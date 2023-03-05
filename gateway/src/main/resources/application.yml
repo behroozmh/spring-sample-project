@@ -1,23 +1,59 @@
-server:
-  port: 8081
-  servlet:
-    context-path: /ui3
 spring:
   application:
     name: api-Gateway
+  security:
+    oauth2:
+      client:
+        registration:
+          custom:
+            client-id: admin
+            client-secret: adminSecret
+            scope: adminScope
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8085
+        provider:
+          custom:
+            authorization-uri: ${auth.host}:${auth.port}/${auth.context}/oauth/authorize
+            token-uri: ${auth.host}:${auth.port}/${auth.context}/oauth/token
+            user-info-uri: ${auth.host}:${auth.port}/${auth.context}/user
+            user-name-attribute: preferred_username
   cloud:
     gateway:
       routes:
-      - id: me
-        uri: http://localhost:8080/me/
-        predicates:
-        - Path=/me/**
-      - id: resource
-        uri: http://localhost:8080/me/
-        predicates:
-        - Path=/resource/**
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
+        - id: user
+          uri: ${auth.host}:${auth.port}/${auth.context}/user
+          predicates:
+            - Path=/user/**
+        - id: authorize
+          uri: http://172.17.192.121:9998/authorization
+          predicates:
+            - Path=/authorize/**
+        - id: audit
+          uri: http://172.17.192.121:9998/audit
+          predicates:
+            - Path=/audit/**
+        - id: resource
+          uri: http://localhost:9090/resource
+          predicates:
+            - Path=/resource/**
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+server:
+  port: 8085
+  servlet:
+    context-path: /ui3
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+auth:
+  host: https://saba.esata.ir
+  port: 7090
+  context: authentication
+  logout.url: https://saba.esata.ir:7090/authentication/myLogout
+my:
+  white-list:
+    host: localhost:8081,172.17.192.121:8081,10.128.40.48
+    origin: http://localhost:8081,http://172.17.192.121:8081
+    methods: GET,POST,PUT,OPTION,DELETE

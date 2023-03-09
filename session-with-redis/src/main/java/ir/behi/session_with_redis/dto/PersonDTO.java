@@ -1,8 +1,9 @@
 package ir.behi.session_with_redis.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class PersonDTO {
+public class PersonDTO implements Serializable {
     private String nationalCode;
     private String firstName;
     private String lastName;

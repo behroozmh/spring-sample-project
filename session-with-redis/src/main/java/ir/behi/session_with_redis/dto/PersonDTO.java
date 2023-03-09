@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class PersonDTO implements Serializable {
+
     private String nationalCode;
     private String firstName;
     private String lastName;

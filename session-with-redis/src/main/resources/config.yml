@@ -1,0 +1,8 @@
+server:
+  port: 8080
+my:
+  redis:
+    namespace: my:session
+    host: 192.168.10.30
+    password: 1qaz!QAZ
+    store-type: redis

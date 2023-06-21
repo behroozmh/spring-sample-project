@@ -7,4 +7,3 @@ services:
     name: serv2
     url: http://127.0.0.1:8080/me
     tryCount: 3
-

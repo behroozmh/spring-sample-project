@@ -1,4 +1,4 @@
-package ir.behi.YmlAtRuntime;
+package ir.behi.yml_at_runtime;
 
 import org.springframework.core.io.DefaultResourceLoader;
 import org.yaml.snakeyaml.Yaml;
@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class YamlUtils {
+    private YamlUtils() {
+    }
+
     public static List<ServiceModel> getListYaml() {
         List<ServiceModel> lst = new ArrayList<>();
         try {

@@ -1,4 +1,4 @@
-package ir.behi.YmlAtRuntime;
+package ir.behi.yml_at_runtime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
